@@ -8,6 +8,8 @@ class ChangeColorController < UIViewController
     @text_field = UITextField.alloc.initWithFrame(CGRectZero)
     @text_field.borderStyle = UITextBorderStyleRoundedRect
     @text_field.textAlignment = UITextAlignmentCenter
+    @text_field.enablesReturnKeyAutomatically = true
+    @text_field.returnKeyType = UIReturnKeyDone
     @text_field.placeholder = "Enter a color"
     @text_field.frame = [CGPointZero, [150,32]]
     @text_field.center =
@@ -53,5 +55,12 @@ class ChangeColorController < UIViewController
 
   def close_change_color
     self.dismissViewControllerAnimated(true, completion:lambda {})
+  end
+
+  def textFieldShouldReturn(textField)
+    puts "eo"
+    change_color
+    textField.resignFirstResponder
+    false
   end
 end

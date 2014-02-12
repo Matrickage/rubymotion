@@ -17,5 +17,7 @@ class AppDelegate
       @window.rootViewController = tab_controller
 
       true
+
   end
+
 end
