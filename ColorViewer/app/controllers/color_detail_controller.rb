@@ -8,6 +8,12 @@ class ColorDetailController < UIViewController
     super
     self.view.backgroundColor = @color
     self.title = "Detail"
+    rightButton =
+      UIBarButtonItem.alloc.initWithTitle("Change",
+                                          style: UIBarButtonItemStyleBordered,
+                                          target:self,
+                                          action:'change_color')
+    self.navigationItem.rightBarButtonItem = rightButton
   end
 
   def initWithNibName(name, bundle: bundle)
@@ -18,5 +24,14 @@ class ColorDetailController < UIViewController
         image: nil,
         tag: 1)
     self
+  end
+
+  def change_color
+    controller = ChangeColorController.alloc.initWithNibName(nil, bundle:nil)
+    controller.color_detail_controller = self
+    self.presentViewController(
+      UINavigationController.alloc.initWithRootViewController(controller),
+      animated:true,
+      completion: lambda {})
   end
 end
