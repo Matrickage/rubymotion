@@ -58,7 +58,6 @@ class ChangeColorController < UIViewController
   end
 
   def textFieldShouldReturn(textField)
-    puts "eo"
     change_color
     textField.resignFirstResponder
     false
